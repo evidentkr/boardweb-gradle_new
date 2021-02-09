@@ -16,11 +16,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity security) throws Exception {
-		security.authorizeRequests().antMatchers("/", "/system/**").permitAll();
+		security.authorizeRequests().antMatchers("/", "/system/**","/h2-console/**","/profile").permitAll();
 		security.authorizeRequests().antMatchers("/board/**").authenticated();
 		security.authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN");
 
 		security.csrf().disable();
+
+		//h2 콘솔사용 가능하게 설정
+		security.headers().frameOptions().disable();
+
 		security.formLogin()
 				.loginPage("/system/login")
 				.defaultSuccessUrl("/board/getBoardList", true);

@@ -62,20 +62,20 @@ public class BoardRepositoryTest {
 			board.setContent(member2.getName() + "가 등록한 게시글 " + i);
 			boardRepo.save(board);
 		}
-	}
+/*	}
 
 	@Test
-	public void testGetBoardList() {
+	public void testGetBoardList() {*/
 		Member member = memberRepo.findById("member").get();
 
 		System.out.println("[ " + member.getName() + "가 등록한 게시글 ]");
 		for (Board board : member.getBoardList()) {
 			System.out.println("---> " + board.toString());
 		}
-	}
+/*	}
 
 	@Test
-	public void testGetBoard() {
+	public void testGetBoard() {*/
 		Board board = boardRepo.findById(1L).get();
 
 		System.out.println("[ " + board.getSeq() + "번 게시 글 상세 정보 ]");
